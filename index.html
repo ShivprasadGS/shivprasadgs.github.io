@@ -1,418 +1,827 @@
 <!DOCTYPE html>
-<html lang="en-US">
-  <head>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Shivprasad Shivratri</title>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="crossorigin"/>
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&amp;family=Roboto:wght@300;400;500;700&amp;display=swap"/>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&amp;family=Roboto:wght@300;400;500;700&amp;display=swap" media="print" onload="this.media='all'"/>
-    <noscript>
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&amp;family=Roboto:wght@300;400;500;700&amp;display=swap"/>
-    </noscript>
-    <link href="css/font-awesome/css/all.min.css?ver=1.2.1" rel="stylesheet">
-    <link href="css/mdb.min.css?ver=1.2.1" rel="stylesheet">
-    <link href="css/aos.css?ver=1.2.1" rel="stylesheet">
-    <link href="css/main.css?ver=1.2.1" rel="stylesheet">
-    <noscript>
-      <style type="text/css">
-        [data-aos] {
-            opacity: 1 !important;
-            transform: translate(0) scale(1) !important;
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shivprasad Shivratri | Portfolio</title>
+    <style>
+        :root {
+            --primary: #94c9a9;
+            --secondary: #b5ead7;
+            --accent: #ffdfd3;
+            --light: #ffffff;
+            --dark: #2b2d42;
+            --text: #333333;
+            --background: #f7f7f7;
+            --sidebar-bg: #2b2d42;
+            --sidebar-text: #ffffff;
         }
-      </style>
-    </noscript>
-  </head>
-  <body class="bg-light" id="top">
-    <header class="d-print-none">
-      <div class="container text-center text-lg-left">
-        <div class="pt-4 clearfix">
-          <h1 class="site-title mb-0">Shivprasad Shivratri</h1>
-          <div class="site-nav"> 
-            <nav role="navigation">
-              <ul class="nav justify-content-center">
-                <li class="nav-item"><a class="nav-link" href="#about" title="About"><span class="menu-title">About</span></a>
-                </li>
-                <li class="nav-item"><a class="nav-link" href="#news" title="News"><span class="menu-title">News</span></a>
-                </li>
-                <li class="nav-item"><a class="nav-link" href="#research" title="Research"><span class="menu-title">Research</span></a>
-                </li>
-                <li class="nav-item"><a class="nav-link" href="#projects" title="Projects"><span class="menu-title">Projects</span></a>
-                </li>
-                <li class="nav-item"><a class="nav-link" href="#contact" title="Contact`"><span class="menu-title">Contact</span></a>
-                </li>
-              </ul>
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        
+        .page-container {
+            display: flex;
+            flex: 1;
+        }
+        
+        .sidebar {
+            width: 250px;
+            background-color: var(--sidebar-bg);
+            color: var(--sidebar-text);
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            z-index: 100;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+        }
+        
+        .sidebar-profile {
+            padding: 2rem 1rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: var(--dark);
+            font-size: 2.5rem;
+            font-weight: bold;
+            border: 3px solid var(--accent);
+        }
+        
+        .sidebar-name {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .sidebar-title {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-bottom: 1rem;
+        }
+        
+        .sidebar-socials {
+            display: flex;
+            justify-content: center;
+            gap: 0.8rem;
+            margin-top: 1rem;
+        }
+        
+        .sidebar-socials a {
+            color: var(--sidebar-text);
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+        
+        .sidebar-socials a:hover {
+            color: var(--accent);
+        }
+        
+        .sidebar-nav {
+            padding: 1rem 0;
+        }
+        
+        .nav-item {
+            position: relative;
+        }
+        
+        .nav-link {
+            display: block;
+            padding: 0.8rem 1.5rem;
+            color: var(--sidebar-text);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            background-color: rgba(255,255,255,0.1);
+            border-left-color: var(--accent);
+        }
+        
+        .content-area {
+            flex: 1;
+            margin-left: 250px;
+            padding: 2rem;
+        }
+        
+        section {
+            padding: 3rem 0;
+            min-height: 100vh;
+            display: none;
+        }
+        
+        section.active {
+            display: block;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--dark);
+            position: relative;
+            display: inline-block;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 4px;
+            background: var(--primary);
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        p {
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+        
+        .card {
+            background-color: var(--light);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px rgba(0,0,0,0.1);
+        }
+        
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+        
+        .card-title {
+            font-weight: bold;
+            color: var(--dark);
+        }
+        
+        .card-subtitle {
+            color: #6c757d;
+            font-style: italic;
+        }
+        
+        .card-date {
+            color: #6c757d;
+        }
+        
+        .card-content {
+            color: var(--text);
+        }
+        
+        .card-content ul {
+            margin-left: 1.5rem;
+            margin-top: 0.5rem;
+        }
+        
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .skill {
+            background-color: var(--secondary);
+            color: var(--dark);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .publications {
+            margin-top: 2rem;
+        }
+        
+        .publication {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .publication:last-child {
+            border-bottom: none;
+        }
+        
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .project-card {
+            background-color: var(--light);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px rgba(0,0,0,0.1);
+        }
+        
+        .project-content {
+            padding: 1.5rem;
+        }
+        
+        .project-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+        
+        .project-image {
+            height: 200px;
+            background-color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--light);
+            font-size: 1.5rem;
+        }
+        
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        .btn {
+            background-color: var(--primary);
+            color: var(--dark);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+        
+        .btn:hover {
+            background-color: var(--secondary);
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: var(--light);
+            text-align: center;
+            padding: 1.5rem;
+            margin-left: 250px;
+        }
+        
+        #home {
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+        
+        .home-content {
+            max-width: 800px;
+            z-index: 2;
+        }
+        
+        .home-title {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+        
+        .home-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--dark);
+        }
+        
+        .home-text {
+            margin-bottom: 2rem;
+            color: var(--dark);
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--dark);
+            color: var(--light);
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+        
+        .cta-button:hover {
+            background-color: var(--primary);
+            color: var(--dark);
+            transform: translateY(-3px);
+        }
+        
+        .mobile-nav-toggle {
+            display: none;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: var(--sidebar-bg);
+            color: var(--sidebar-text);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            font-size: 1.5rem;
+            z-index: 999;
+            cursor: pointer;
+            border: none;
+        }
+        
+        @media (max-width: 992px) {
+            .sidebar {
+                width: 80px;
+                transform: translateX(0);
+                transition: all 0.4s ease;
+            }
+            
+            .sidebar.active {
+                width: 250px;
+            }
+            
+            .sidebar:not(.active) .sidebar-profile {
+                padding: 1rem 0.5rem;
+            }
+            
+            .sidebar:not(.active) .profile-img {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+            
+            .sidebar:not(.active) .sidebar-name,
+            .sidebar:not(.active) .sidebar-title,
+            .sidebar:not(.active) .sidebar-socials {
+                display: none;
+            }
+            
+            .sidebar:not(.active) .nav-link {
+                padding: 0.8rem;
+                text-align: center;
+            }
+            
+            .content-area, footer {
+                margin-left: 80px;
+            }
+            
+            .content-area.sidebar-active, footer.sidebar-active {
+                margin-left: 250px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-nav-toggle {
+                display: block;
+            }
+            
+            .sidebar {
+                width: 0;
+                transform: translateX(-250px);
+            }
+            
+            .sidebar.active {
+                width: 250px;
+                transform: translateX(0);
+            }
+            
+            .content-area, footer {
+                margin-left: 0;
+            }
+            
+            .content-area.sidebar-active, footer.sidebar-active {
+                margin-left: 0;
+            }
+            
+            .projects {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <button class="mobile-nav-toggle" id="mobile-nav-toggle">
+        <i class="fas fa-bars"></i>
+    </button>
+    
+    <div class="page-container">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-profile">
+                <div class="profile-img">SS</div>
+                <h3 class="sidebar-name">Shivprasad Shivratri</h3>
+                <p class="sidebar-title">PhD Student in Computer Science</p>
+                <div class="sidebar-socials">
+                    <a href="mailto:shivprasadshivratri8793@gmail.com"><i class="fas fa-envelope"></i></a>
+                    <a href="tel:+13392429884"><i class="fas fa-phone"></i></a>
+                    <a href="https://github.com/" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://linkedin.com/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <div class="nav-item">
+                    <a href="#home" class="nav-link active" data-section="home">
+                        <i class="fas fa-home"></i> <span>Home</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="#about" class="nav-link" data-section="about">
+                        <i class="fas fa-user"></i> <span>About</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="#education" class="nav-link" data-section="education">
+                        <i class="fas fa-graduation-cap"></i> <span>Education</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="#experience" class="nav-link" data-section="experience">
+                        <i class="fas fa-briefcase"></i> <span>Experience</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="#research" class="nav-link" data-section="research">
+                        <i class="fas fa-flask"></i> <span>Research</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="#projects" class="nav-link" data-section="projects">
+                        <i class="fas fa-code"></i> <span>Projects</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="#publications" class="nav-link" data-section="publications">
+                        <i class="fas fa-book"></i> <span>Publications</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="#contact" class="nav-link" data-section="contact">
+                        <i class="fas fa-envelope"></i> <span>Contact</span>
+                    </a>
+                </div>
             </nav>
-          </div>
-        </div>
-      </div>
-    </header>
-    <div class="page-content">
-      <div class="container">
-<div class="resume-container">
-  <div class="shadow-1-strong bg-white my-5" id="intro">
-    <div class="bg-info text-white">
-      <div class="cover bg-image"><img src="images/header-background.jpg" />
-        <div class="mask" style="background-color: rgba(0, 0, 0, 0.7);backdrop-filter: blur(2px);">
-          <div class="text-center p-5">
-            <div class="avatar p-1"><img class="img-thumbnail shadow-2-strong" src="images/avatar.jpg" width="160" height="160"/></div>
-            <div class="header-bio mt-3">
-              <div data-aos="zoom-in" data-aos-delay="0">
-                <h2 class="h1">Shivprasad Shivratri</h2>
-              </div>
-              <div class="header-social mb-3 d-print-none" data-aos="zoom-in" data-aos-delay="200">
-                <nav role="navigation">
-                  <ul class="nav justify-content-center">
-                    <li class="nav-item"><a class="nav-link" href="https://www.linkedin.com/in/shivprasad-shivratri-58004a114/" title="Linkedin"><i class="fab fa-linkedin"></i><span class="menu-title sr-only">Linkedin</span></a>
-                    </li>
-                    <li class="nav-item"><a class="nav-link" href="https://scholar.google.com/citations?hl=en&user=Mhgmwd4AAAAJ" title="Google Scholar"><i class="fab fa-google"></i><span class="menu-title sr-only">Google Scholar</span></a>
-                    </li>
-                    <li class="nav-item"><a class="nav-link" href="https://github.com/ShivprasadGS" title="Github"><i class="fab fa-github"></i><span class="menu-title sr-only">Github</span></a>
-                    </li>
-                    <li class="nav-item"><a class="nav-link" href="https://twitter.com/ShivprasadGS" title="Twitter"><i class="fab fa-twitter"></i><span class="menu-title sr-only">Twitter</span></a>
-                    </li>
-                    <li class="nav-item"><a class="nav-link" href="mailto: shivprasadshivratri8793@gmail.com" title="Email"><i class="fa fa-envelope"></i><span class="menu-title sr-only">Email</span> </a>
-                    </li>
-                  </ul>
-                </nav>
-              </div>
-              <div class="d-print-none"><a class="btn btn-outline-light btn-lg shadow-sm mt-1 me-3" href="docs/CV_Academic.pdf" data-aos="fade-right" data-aos-delay="700">Download Academic CV</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+        </aside>
+        
+        <main class="content-area" id="content-area">
+            <section id="home" class="active">
+                <div class="home-content">
+                    <h1 class="home-title">Shivprasad Shivratri</h1>
+                    <p class="home-subtitle">PhD Student in Computer Science | Reinforcement Learning | Robotics</p>
+                    <p class="home-text">I'm a researcher focused on Reinforcement Learning for Human-Robot Interaction in Rehabilitation. With a strong background in Electrical and Electronic Engineering, I combine technical expertise with innovative approaches to solve complex problems.</p>
+                    <a href="#about" class="cta-button nav-trigger" data-section="about">Learn More About Me</a>
+                </div>
+            </section>
+            
+            <section id="about">
+                <h2>About Me</h2>
+                <div class="card">
+                    <p>I am a PhD student in Computer Science at Tufts University, working in the GOLD Lab under the mentorship of Assistant Professor Reuth Mirsky. My research focuses on Reinforcement Learning for Human-Robot Interaction in Rehabilitation.</p>
+                    <p>With a strong background in Electrical and Electronic Engineering from Tel Aviv University, I've worked extensively on innovative projects in power systems, particularly advancing the analysis and control of synchronverters.</p>
+                    <p>My professional experience spans research, system engineering, and consultancy roles across multiple countries. I'm passionate about applying machine learning and AI to solve real-world problems, especially in robotics and human-computer interaction.</p>
+                    
+                    <div class="skills">
+                        <span class="skill">Reinforcement Learning</span>
+                        <span class="skill">Python</span>
+                        <span class="skill">PyTorch</span>
+                        <span class="skill">TensorFlow</span>
+                        <span class="skill">Computer Vision</span>
+                        <span class="skill">Control Systems</span>
+                        <span class="skill">System Engineering</span>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="education">
+                <h2>Education</h2>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <div>
+                            <div class="card-title">PhD in Computer Science</div>
+                            <div class="card-subtitle">Tufts University, Boston, USA</div>
+                        </div>
+                        <div class="card-date">Jan 2025 - Present</div>
+                    </div>
+                    <div class="card-content">
+                        <p>Currently pursuing doctoral research in Computer Science, focusing on Reinforcement Learning for Human-Robot Interaction in Rehabilitation at the GOLD Lab under Assistant Professor Reuth Mirsky.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <div>
+                            <div class="card-title">M.Sc. in Electrical and Electronic Engineering</div>
+                            <div class="card-subtitle">Tel Aviv University, Israel</div>
+                        </div>
+                        <div class="card-date">Oct 2017 - Jun 2021</div>
+                    </div>
+                    <div class="card-content">
+                        <p>CGPA: 88.5/100</p>
+                        <p>Thesis: "Advances in analysis and control of synchronverter"</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <div>
+                            <div class="card-title">B.Sc. in Electrical and Electronic Engineering</div>
+                            <div class="card-subtitle">Tel Aviv University, Israel</div>
+                        </div>
+                        <div class="card-date">Oct 2014 - Aug 2018</div>
+                    </div>
+                    <div class="card-content">
+                        <p>CGPA: 91.6/100</p>
+                        <p>Graduated with "Magna Cum Laude"</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="experience">
+                <h2>Work Experience</h2>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <div>
+                            <div class="card-title">Graduate Research Assistant</div>
+                            <div class="card-subtitle">GOLD Lab, Tufts University, Boston, USA</div>
+                        </div>
+                        <div class="card-date">Jan 2025 - Present</div>
+                    </div>
+                    <div class="card-content">
+                        <p>Working on Reinforcement Learning for Human-Robot Interaction in Rehabilitation under Assistant Professor Reuth Mirsky.</p>
+                        <ul>
+                            <li>Developed Reach Ninja Game in Python, enabling multiple test scenarios to train a Reinforcement Learning Agent using PyTorch and Deep Q-Learning.</li>
+                            <li>Optimized RL agent training, achieving 1.5x the accuracy and 2x score of a human player.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <div>
+                            <div class="card-title">Associate Consultant</div>
+                            <div class="card-subtitle">Meivia Global Services, India</div>
+                        </div>
+                        <div class="card-date">Apr 2024 - Oct 2024</div>
+                    </div>
+                    <div class="card-content">
+                        <ul>
+                            <li>Conducted comprehensive market research for international clients, identifying potential customer and market opportunities for investments.</li>
+                            <li>Drafted an entrepreneurship book based on interviews of Indian businessmen.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <div>
+                            <div class="card-title">Application Engineer</div>
+                            <div class="card-subtitle">KLA+, India</div>
+                        </div>
+                        <div class="card-date">Sep 2023 - Feb 2024</div>
+                    </div>
+                    <div class="card-content">
+                        <p>Provided inspection solutions by investigating semiconductor manufacturing yield issues and created product use-cases for engineering, marketing, and sales teams.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <div>
+                            <div class="card-title">System Engineer</div>
+                            <div class="card-subtitle">KLA+, Israel</div>
+                        </div>
+                        <div class="card-date">May 2022 - Apr 2023</div>
+                    </div>
+                    <div class="card-content">
+                        <ul>
+                            <li>Collaborated with Software, Hardware and Electronics teams to write system level requirements for integrating a new focus laser and adding 3 motors to the Optical head of the inspection tool.</li>
+                            <li>Investigated focus sensor repeatability and optimized system requirements to mitigate the issue.</li>
+                            <li>Wrote diagnostics and calibrations for fast focus mechanism in the inspection tool.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="research">
+                <h2>Research Experience</h2>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <div>
+                            <div class="card-title">Researcher</div>
+                            <div class="card-subtitle">Department of Electrical Engineering - Systems, Tel Aviv University</div>
+                        </div>
+                        <div class="card-date">Oct 2018 - May 2021</div>
+                    </div>
+                    <div class="card-content">
+                        <p>Mentor: Professor George Weiss</p>
+                        <ul>
+                            <li>Designed a novel Synchronverter algorithm for inverters to emulate the behavior of synchronous generators, enhancing power balance and system stability in microgrids.</li>
+                            <li>Achieved a 6x reduction in frequency and voltage deviations from nominal values which improved the grid performance significantly.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <div>
+                            <div class="card-title">Research Intern</div>
+                            <div class="card-subtitle">Physical Electronics Laboratory, Tel Aviv University</div>
+                        </div>
+                        <div class="card-date">Jun 2016 - Aug 2016</div>
+                    </div>
+                    <div class="card-content">
+                        <p>Mentor: Professor Yosi Shacham-Diamand</p>
+                        <ul>
+                            <li>Designed and fabricated a biosensor using sputtering gold and photolithography technique in clean room for drought detection in plants.</li>
+                            <li>Achieved the size reduction of the biosensor by 1x and cost reduction by 3x.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="projects">
+                <h2>Projects</h2>
+                
+                <div class="projects">
+                    <div class="project-card">
+                        <div class="project-image">Reinforcement Learning</div>
+                        <div class="project-content">
+                            <h3 class="project-title">Snake AI</h3>
+                            <p>Developed a classic Snake game in Python and trained a Reinforcement Learning Agent to play the game using PyTorch framework and Deep Q-Learning algorithm.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-image">Computer Vision</div>
+                        <div class="project-content">
+                            <h3 class="project-title">Object Detection and Classification</h3>
+                            <p>Trained a neural network using TensorFlow to detect and classify buses in images with accuracy of 93%.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-image">Computer Vision</div>
+                        <div class="project-content">
+                            <h3 class="project-title">Panorama Creation</h3>
+                            <p>Created a panoramic image by stitching together two images that had few common points of interest.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-image">Mobile Development</div>
+                        <div class="project-content">
+                            <h3 class="project-title">Android Application Development</h3>
+                            <p>Developed an informative mobile application for International conference on Materials Technology using Android Studio and Kotlin SDK.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="publications">
+                <h2>Publications</h2>
+                
+                <div class="publications">
+                    <div class="publication">
+                        <h3>Synchronverters with fast current loops</h3>
+                        <p>Zeev Kustanovich, Shivprasad Shivratri, Hang Yin, Florian Reissner, George Weiss</p>
+                        <p>IEEE Transactions on Industrial Electronics 70(11), 2022</p>
+                    </div>
+                    
+                    <div class="publication">
+                        <h3>The sensitivity of grid-connected synchronverters with respect to measurement errors</h3>
+                        <p>Zeev Kustanovich, Florian Reissner, Shivprasad Shivratri, George Weiss</p>
+                        <p>IEEE Access 9, 2021</p>
+                    </div>
+                    
+                    <div class="publication">
+                        <h3>The equilibrium points and stability of grid-connected synchronverters</h3>
+                        <p>Pietro Lorenzetti, Zeev Kustanovich, Shivprasad Shivratri, George Weiss</p>
+                        <p>IEEE Transactions on Power Systems 37(2), 2021</p>
+                    </div>
+                    
+                    <div class="publication">
+                        <h3>Virtual synchronous machines with fast current loop</h3>
+                        <p>Shivprasad Shivratri, Zeev Kustanovich, George Weiss, Benny Shani</p>
+                        <p>IFAC-PapersOnLine 53(2), 2020</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="contact">
+                <h2>Contact Me</h2>
+                
+                <div class="contact-form">
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Subject" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" rows="5" placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </section>
+        </main>
     </div>
-  </div>
-  <div class="shadow-1-strong bg-white my-5 p-5" id="about">
-    <div class="about-section">
-      <div class="row">
-        <h2 class="h2 fw-light mb-4">About Me</h2>
-          <p style="text-align: justify;">
-            Hello! Fellow explorers on this journey through space and time. I am Shivprasad Ganesh Shivratri, a graduate of B.Sc. and M.Sc. degrees in Electrical and Electronics Engineering from Tel Aviv University. I specialize in research, software development, and systems engineering, with experience in areas like reinforcement learning, human-robot interaction, and microgrid stability. I've co-authored research papers and worked on projects such as biosensor fabrication and advanced control algorithms. I'm passionate about problem-solving, learning new things, and making a difference through technology. I enjoy working in teams and applying my skills to achieve impactful results. Outside of work, I like organizing community events and trekking outdoors.
-          </p>
-      </div>
-    </div>
-  </div>
-  <div class="shadow-1-strong bg-white my-5 p-5" id="skills">
-    <div class="skills-section">
-      <h2 class="h2 fw-light mb-4">Professional Skills</h2>
-      <!--
-      <div class="row">
-        <div class="col-md-6">
-          <div class="mb-3"><span class="fw-bolder">HTML</span>
-            <div class="progress my-2 rounded" style="height: 20px">
-              <div class="progress-bar bg-info" role="progressbar" data-aos="zoom-in-right" data-aos-delay="100" data-aos-anchor=".skills-section" style="width: 95%;" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100">Master</div>
-            </div>
-          </div>
-          <div class="mb-3"><span class="fw-bolder">CSS</span>
-            <div class="progress my-2 rounded" style="height: 20px">
-              <div class="progress-bar bg-info" role="progressbar" data-aos="zoom-in-right" data-aos-delay="200" data-aos-anchor=".skills-section" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">Expert</div>
-            </div>
-          </div>
-          <div class="mb-3"><span class="fw-bolder">JavaScript</span>
-            <div class="progress my-2 rounded" style="height: 20px">
-              <div class="progress-bar bg-info" role="progressbar" data-aos="zoom-in-right" data-aos-delay="300" data-aos-anchor=".skills-section" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">Advance</div>
-            </div>
-          </div>
-          <div class="mb-3"><span class="fw-bolder">WordPress</span>
-            <div class="progress my-2 rounded" style="height: 20px">
-              <div class="progress-bar bg-info" role="progressbar" data-aos="zoom-in-right" data-aos-delay="300" data-aos-anchor=".skills-section" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">Advance</div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="mb-3"><span class="fw-bolder">Adobe Photoshop</span>
-            <div class="progress my-2 rounded" style="height: 20px">
-              <div class="progress-bar bg-secondary" role="progressbar" data-aos="zoom-in-right" data-aos-delay="400" data-aos-anchor=".skills-section" style="width: 95%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100">Master</div>
-            </div>
-          </div>
-          <div class="mb-3"><span class="fw-bolder">Adobe Illustrator</span>
-            <div class="progress my-2 rounded" style="height: 20px">
-              <div class="progress-bar bg-secondary" role="progressbar" data-aos="zoom-in-right" data-aos-delay="400" data-aos-anchor=".skills-section" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">Expert</div>
-            </div>
-          </div>
-          <div class="mb-3"><span class="fw-bolder">Sketch</span>
-            <div class="progress my-2 rounded" style="height: 20px">
-              <div class="progress-bar bg-secondary" role="progressbar" data-aos="zoom-in-right" data-aos-delay="500" data-aos-anchor=".skills-section" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">Expert</div>
-            </div>
-          </div>
-          <div class="mb-3"><span class="fw-bolder">Adobe XD</span>
-            <div class="progress my-2 rounded" style="height: 20px">
-              <div class="progress-bar bg-secondary" role="progressbar" data-aos="zoom-in-right" data-aos-delay="600" data-aos-anchor=".skills-section" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">Beginner</div>
-            </div>
-          </div>
-        </div>
-      </div>
-      -->
-    </div>
-  </div>
-  <div class="shadow-1-strong bg-white my-5 p-5" id="experience">
-    <div class="work-experience-section">
-      <h2 class="h2 fw-light mb-4">Work Experience</h2>
-      <div class="timeline">
-        <div class="timeline-card timeline-card-info" data-aos="fade-in" data-aos-delay="0">
-          <div class="timeline-head px-4 pt-3">
-            <div class="h5">Associate Consultant, <span class="text-muted h6">Meivia Global Services, India</span></div>
-          </div>
-          <div class="timeline-body px-4 pb-4">
-            <div class="text-muted text-small mb-3">Apr. 2024 - Present</div>
-            <div>
-              <ul style="list-style-type:circle">
-                <li>Conducted comprehensive market research for an international client, identifying potential customers and market opportunities.</li>
-                <li>Worked on entrepreneurship book based on the interviews of Indian businessmen.</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="timeline-card timeline-card-info" data-aos="fade-in" data-aos-delay="0">
-          <div class="timeline-head px-4 pt-3">
-            <div class="h5">Application Engineer, <span class="text-muted h6">KLA+, India</span></div>
-          </div>
-          <div class="timeline-body px-4 pb-4">
-            <div class="text-muted text-small mb-3">Sep. 2023 - Feb. 2024</div>
-            <div>
-              <ul style="list-style-type:circle">
-                <li>Explaining the tool capabilities to the customers and understanding their requirements.</li>
-                <li>Based on the feedback, working with the internal teams to improve the tools.</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="timeline-card timeline-card-info" data-aos="fade-in" data-aos-delay="0">
-          <div class="timeline-head px-4 pt-3">
-            <div class="h5">System Engineer, <span class="text-muted h6">KLA+, Israel</span></div>
-          </div>
-          <div class="timeline-body px-4 pb-4">
-            <div class="text-muted text-small mb-3">May 2022 - Apr. 2023</div>
-            <div>
-              <ul style="list-style-type:circle">
-                <li>Collaborated with Software, Hardware and Electronics teams to write system level requirements for integrating a new focus laser and adding 3 motors to the Optical head of the tool.</li>
-                <li>Investigated focus sensor repeatability issues and wrote system requirements with the solution.</li>
-                <li>Wrote diagnostics and calibrations for fast focus mechanism in the tool.</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="timeline-card timeline-card-info" data-aos="fade-in" data-aos-delay="0">
-          <div class="timeline-head px-4 pt-3">
-            <div class="h5">Researcher, <span class="text-muted h6">Control Systems and Power Electronics Department, Tel Aviv University (TAU), Israel</span></div>
-          </div>
-          <div class="timeline-body px-4 pb-4">
-            <div class="text-muted text-small mb-3">Oct. 2018 ‑ May 2021</div>
-            <div>
-              <ul style="list-style-type:circle">
-                <li>In MATLAB/Simulink, investigated <b>Synchronverter</b> algorithm for inverters to make them behave like a Synchronous Generators to take care of power balance, system stability in microgrids where majority of power is supplied using Renewable Energies.</li>
-                <li>Improved the existing algorithm which will take care of the frequency and voltage deviations from nominal values. <i>(Under the supervision of Prof. George Weiss)</i></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="timeline-card timeline-card-info" data-aos="fade-in" data-aos-delay="0">
-          <div class="timeline-head px-4 pt-3">
-            <div class="h5">Lab Instructor, <span class="text-muted h6">Control Laboratory, TAU, Israel</span></div>
-          </div>
-          <div class="timeline-body px-4 pb-4">
-            <div class="text-muted text-small mb-3">Feb. 2020 ‑ Jun. 2021</div>
-            <div>
-              <ul style="list-style-type:circle">
-                <li>Supervised the introductory labs in the field of control theory for B.Sc. in engineering students.</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="timeline-card timeline-card-info" data-aos="fade-in" data-aos-delay="0">
-          <div class="timeline-head px-4 pt-3">
-            <div class="h5">Tutor, <span class="text-muted h6">TAU, Israel</span></div>
-          </div>
-          <div class="timeline-body px-4 pb-4">
-            <div class="text-muted text-small mb-3">Oct. 2015 ‑ Jun. 2018</div>
-            <div>
-              <ul style="list-style-type:circle">
-                <li>Personal Tutor for engineering students in Physics, Linear Algebra, Calculus, ODE, Control Theory.</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="timeline-card timeline-card-info" data-aos="fade-in" data-aos-delay="0">
-          <div class="timeline-head px-4 pt-3">
-            <div class="h5">Intern, <span class="text-muted h6">Physical Electronics Laboratory, TAU, Israel</span></div>
-          </div>
-          <div class="timeline-body px-4 pb-4">
-            <div class="text-muted text-small mb-3">Jun. 2016 ‑ Aug. 2016</div>
-            <div>
-              <ul style="list-style-type:circle">
-                <li>Fabricated biosensor for stress/drought detection in plants made using sputtering gold and photo lithography technique in clean room and tested the sensors on tobacco plants for drought detection. <i>(Under the supervision of Prof. Yosi Shacham)</i></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="shadow-1-strong bg-white my-5 p-5" id="education">
-    <div class="education-section">
-      <h2 class="h2 fw-light mb-4">Education</h2>
-      <div class="timeline">
-        <div class="timeline-card timeline-card-success" data-aos="fade-in" data-aos-delay="0">
-          <div class="timeline-head px-4 pt-3">
-            <div class="h5">M.Sc. in Electrical and Electronics Engineering, <span class="text-muted h6">Department of Electrical Engineering ‑ Systems, Tel Aviv University, Israel</span> </div>
-          </div>
-          <div class="timeline-body px-4 pb-4">
-            <div class="text-muted text-small mb-3">Oct. 2017 ‑ Jun. 2021</div>
-            <div>
-              <b>Thesis title:</b> <i>“Advances in analysis and control of synchronverter”</i> <br>
-              <b>Thesis supervisor:</b> Prof. George Weiss
-            </div>
-          </div>
-        </div>
-        <div class="timeline-card timeline-card-success" data-aos="fade-in" data-aos-delay="0">
-          <div class="timeline-head px-4 pt-3">
-            <div class="h5">B.Sc. in Electrical and Electronics Engineering, <span class="text-muted h6">School of Electrical Engineering, Tel Aviv University, Israel</span> </div>
-          </div>
-          <div class="timeline-body px-4 pb-4">
-            <div class="text-muted text-small mb-3">Oct. 2014 ‑ Aug. 2018</div>
-            <div>
-              Graduated with <b>“Magna Cum Laude”</b>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="shadow-1-strong bg-white my-5 p-5 d-print-none" id="portfolio">
-    <div class="portfolio-section">
-      <!--
-      <h2 class="h2 fw-light mb-4">Portfolio</h2>
-      <div class="row g-0">
-        <div class="col-md-6"><a href="https://dribbble.com/" target="_blank"><img class="img-fluid" src="images/project-1.jpg" width="800" height="500"/></a></div>
-        <div class="col-md-6 d-flex align-items-center" data-aos="fade-left" data-aos-delay="100">
-          <div class="m-4 mt-md-2">
-            <p class="text-teal text-small">Frontend / HTML / CSS / JavaScript</p>
-            <h3>Photo Agency Website</h3>
-            <p class="text-muted">Built highly performant website front end for a Photography agency. Delivered codebase in HTML, CSS and modern JavaScript.</p>
-          </div>
-        </div>
-      </div>
-      <div class="row g-0 portfolio-reverse">
-        <div class="col-md-6 d-flex align-items-center" data-aos="fade-right" data-aos-delay="100">
-          <div class="m-4 mt-md-2 text-end">
-            <p class="text-teal text-small">Graphic Design / Photoshop / Sketch</p>
-            <h3>Restaurant Website Design</h3>
-            <p class="text-muted">Web design for popular resturant chain involving complex layouts done in both Photoshop and Sketch. Collaborated with back-end and front-end team for finished product.</p>
-          </div>
-        </div>
-        <div class="col-md-6"><a href="https://www.behance.net/" target="_blank"><img class="img-fluid" src="images/project-2.jpg" width="800" height="500"/></a></div>
-      </div>
-      <div class="row g-0">
-        <div class="col-md-6"><a href="https://dribbble.com/" target="_blank"><img class="img-fluid" src="images/project-3.jpg" width="800" height="500"/></a></div>
-        <div class="col-md-6 d-flex align-items-center" data-aos="fade-left" data-aos-delay="100">
-          <div class="m-4 mt-md-2">
-            <p class="text-teal text-small">Frontend / HTML / CSS / JavaScript</p>
-            <h3>E-Commerce Website</h3>
-            <p class="text-muted">Built highly performant website for an E-commerce Portal. Worked with back-end team to timely deliver codebase in HTML, CSS and modern JavaScript.</p>
-          </div>
-        </div>
-      </div>-->
-    </div>
-  </div>
-  <div class="shadow-1-strong bg-white my-5 p-5" id="references">
-    <div class="reference-section">
-      <!--
-      <h2 class="h2 fw-light mb-4">References</h2>
-      <div class="row"> 
-        <div class="col-md-6">
-          <div class="d-flex mb-2">
-            <div class="avatar"><img src="images/reference-image-1.jpg" width="60" height="60"/></div>
-            <div class="header-bio m-3 mb-0">
-              <h3 class="h6 mb-1" data-aos="fade-left" data-aos-delay="0">Aiyana</h3>
-              <p class="text-muted text-small" data-aos="fade-left" data-aos-delay="100">CEO / Web Design Company</p>
-            </div>
-          </div>
-          <div class="d-flex"><i class="text-secondary fas fa-quote-left"></i>
-            <p class="lead mx-2" data-aos="fade-left" data-aos-delay="100">Walter displays exemplary professionalism and is able to take on challenges. He learns quickly and is an asset to any team.</p>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="d-flex mb-2">
-            <div class="avatar"><img src="images/reference-image-2.jpg" width="60" height="60"/></div>
-            <div class="header-bio m-3 mb-0">
-              <h3 class="h6 mb-1" data-aos="fade-left" data-aos-delay="0">Alexander</h3>
-              <p class="text-muted text-small" data-aos="fade-left" data-aos-delay="100">Front-end Developer / Web Design Company</p>
-            </div>
-          </div>
-          <div class="d-flex"><i class="text-secondary fas fa-quote-left"></i>
-            <p class="lead mx-2" data-aos="fade-left" data-aos-delay="100">Walter is a great co-worker and problem solver. He is quick to extend his helping hand and makes a good team player.</p>
-          </div>
-        </div>
-      </div>-->
-    </div>
-  </div>
-  <div class="shadow-1-strong bg-white my-5 p-5" id="contact">
-    <div class="contant-section">
-      <h2 class="h2 fw-light text mb-4">Contact</h2>
-      <div class="row mb-4">
-        <div class="col-md-5" data-aos="fade-left" data-aos-delay="200">
-          <div class="mt-1">
-            <!--
-            <div class="h6"><i class="fas fa-phone pe-2 text-muted" style="width:24px;opacity:0.85;"></i> +0718-111-0011</div>
-            <div class="h6"><i class="far fa-envelope pe-2 text-muted" style="width:24px;opacity:0.85;"></i> walter@company.com</div>
-            -->
-          </div>
-          <div class="mt-5 d-print-none"><form action="https://formspree.io/your@email.com"
-    method="POST">
-  <div class="form-outline mb-4">
-    <input type="text" id="name" class="form-control" required/>
-    <label class="form-label" for="name">Name</label>
-  </div>
-  <div class="form-outline mb-4">
-    <input type="email" id="email" class="form-control" required/>
-    <label class="form-label" for="email">Email address</label>
-  </div>
-  <div class="form-outline mb-4">
-    <textarea class="form-control" style="resize: none;" id="message" rows="4" required></textarea>
-    <label class="form-label" for="message">Message</label>
-  </div>
-  <button class="btn btn-info btn-block mb-4" type="submit">Send</button>
-</form>
-          </div>
-        </div>
-        <!--
-        <div class="col-md-7 d-print-none" data-aos="zoom-in" data-aos-delay="100"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d496.9774799129763!2d-73.98032087190995!3d40.765927126473905!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c258f9cfcb250d%3A0xdb570ddcb766e3a8!2sNew%20York%20City%20Center!5e0!3m2!1sen!2sin!4v1614183731149!5m2!1sen!2sin" width="500" height="400" style="border:0;width:100%;" allowfullscreen="" loading="lazy"></iframe></div>-->
-      </div>
-    </div>
-  </div>
-</div></div>
-    </div>
-    <footer class="pt-4 pb-4 text-muted text-center d-print-none">
-      <div class="container">
-        <!--
-        <div class="my-3">
-          <div class="h4">Shivprasad Shivratri</div>
-          <div class="footer-nav">
-            <nav role="navigation">
-              <ul class="nav justify-content-center">
-                <li class="nav-item"><a class="nav-link" href="https://twitter.com/templateflip" title="Twitter"><i class="fab fa-twitter"></i><span class="menu-title sr-only">Twitter</span></a>
-                </li>
-                <li class="nav-item"><a class="nav-link" href="https://www.facebook.com/templateflip" title="Facebook"><i class="fab fa-facebook"></i><span class="menu-title sr-only">Facebook</span></a>
-                </li>
-                <li class="nav-item"><a class="nav-link" href="https://www.instagram.com/templateflip" title="Instagram"><i class="fab fa-instagram"></i><span class="menu-title sr-only">Instagram</span></a>
-                </li>
-                <li class="nav-item"><a class="nav-link" href="https://github.com/templateflip" title="Github"><i class="fab fa-github"></i><span class="menu-title sr-only">Github</span></a>
-                </li>
-              </ul>
-            </nav>
-          </div>
-        </div>-->
-        <div class="text-small">
-          <div class="mb-1">&copy; Material Resume. All rights reserved.</div>
-          <div>Design - <a href="https://templateflip.com/" target="_blank">TemplateFlip</a></div>
-        </div>
-      </div>
+    
+    <footer id="footer">
+        <p>&copy; 2025 Shivprasad Shivratri. All rights reserved.</p>
     </footer>
-    <script src="scripts/mdb.min.js?ver=1.2.1"></script>
-    <script src="scripts/aos.js?ver=1.2.1"></script>
-    <script src="scripts/main.js?ver=1.2.1"></script>
-  </body>
-</html>
+    
+    <script>
+        // Section navigation functionality
+        document.querySelectorAll('.nav-link, .nav-trigger').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const sectionId = this.getAttribute('data-section');
+                
+                // Update active section
+                document.querySelectorAll('section').forEach(section => {
+                    section.classList.remove('active');
+                });
+                document.getElementById(sectionId).classList.add('active');
+                
+                // Update active nav link
+                document.querySelectorAll('.nav-link').forEach(navLink => {
+                    navLink.classList.remove('active');
+                });
+                document.querySelector(`.nav-link[data-section="${sectionId}"]`).classList.add('active');
+                
+                // On mobile, close sidebar after clicking
+                if (window.innerWidth <= 768) {
+                    document.getElementById('sidebar').classList.remove('active');
+                    document.getElementById('content-area').classList.remove('sidebar-active');
+                    document.getElementById('footer').classList.remove('sidebar-active');
+                }
+                
+                // Scroll to top
