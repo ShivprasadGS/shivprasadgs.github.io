@@ -3,825 +3,198 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shivprasad Shivratri | Portfolio</title>
-    <style>
-        :root {
-            --primary: #94c9a9;
-            --secondary: #b5ead7;
-            --accent: #ffdfd3;
-            --light: #ffffff;
-            --dark: #2b2d42;
-            --text: #333333;
-            --background: #f7f7f7;
-            --sidebar-bg: #2b2d42;
-            --sidebar-text: #ffffff;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        body {
-            background-color: var(--background);
-            color: var(--text);
-            line-height: 1.6;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-        
-        .page-container {
-            display: flex;
-            flex: 1;
-        }
-        
-        .sidebar {
-            width: 250px;
-            background-color: var(--sidebar-bg);
-            color: var(--sidebar-text);
-            position: fixed;
-            height: 100vh;
-            overflow-y: auto;
-            z-index: 100;
-            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
-        }
-        
-        .sidebar-profile {
-            padding: 2rem 1rem;
-            text-align: center;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-        
-        .profile-img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            background-color: var(--primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1rem;
-            color: var(--dark);
-            font-size: 2.5rem;
-            font-weight: bold;
-            border: 3px solid var(--accent);
-        }
-        
-        .sidebar-name {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .sidebar-title {
-            font-size: 0.9rem;
-            opacity: 0.8;
-            margin-bottom: 1rem;
-        }
-        
-        .sidebar-socials {
-            display: flex;
-            justify-content: center;
-            gap: 0.8rem;
-            margin-top: 1rem;
-        }
-        
-        .sidebar-socials a {
-            color: var(--sidebar-text);
-            font-size: 1.2rem;
-            transition: color 0.3s ease;
-        }
-        
-        .sidebar-socials a:hover {
-            color: var(--accent);
-        }
-        
-        .sidebar-nav {
-            padding: 1rem 0;
-        }
-        
-        .nav-item {
-            position: relative;
-        }
-        
-        .nav-link {
-            display: block;
-            padding: 0.8rem 1.5rem;
-            color: var(--sidebar-text);
-            text-decoration: none;
-            transition: all 0.3s ease;
-            border-left: 3px solid transparent;
-        }
-        
-        .nav-link:hover, .nav-link.active {
-            background-color: rgba(255,255,255,0.1);
-            border-left-color: var(--accent);
-        }
-        
-        .content-area {
-            flex: 1;
-            margin-left: 250px;
-            padding: 2rem;
-        }
-        
-        section {
-            padding: 3rem 0;
-            min-height: 100vh;
-            display: none;
-        }
-        
-        section.active {
-            display: block;
-        }
-        
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        h2 {
-            font-size: 2rem;
-            margin-bottom: 2rem;
-            color: var(--dark);
-            position: relative;
-            display: inline-block;
-        }
-        
-        h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 50px;
-            height: 4px;
-            background: var(--primary);
-        }
-        
-        h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--primary);
-        }
-        
-        p {
-            margin-bottom: 1rem;
-            color: var(--text);
-        }
-        
-        .card {
-            background-color: var(--light);
-            border-radius: 8px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 20px rgba(0,0,0,0.1);
-        }
-        
-        .card-header {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 1rem;
-        }
-        
-        .card-title {
-            font-weight: bold;
-            color: var(--dark);
-        }
-        
-        .card-subtitle {
-            color: #6c757d;
-            font-style: italic;
-        }
-        
-        .card-date {
-            color: #6c757d;
-        }
-        
-        .card-content {
-            color: var(--text);
-        }
-        
-        .card-content ul {
-            margin-left: 1.5rem;
-            margin-top: 0.5rem;
-        }
-        
-        .skills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-        
-        .skill {
-            background-color: var(--secondary);
-            color: var(--dark);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-        }
-        
-        .publications {
-            margin-top: 2rem;
-        }
-        
-        .publication {
-            margin-bottom: 1.5rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid #e9ecef;
-        }
-        
-        .publication:last-child {
-            border-bottom: none;
-        }
-        
-        .projects {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-        
-        .project-card {
-            background-color: var(--light);
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 20px rgba(0,0,0,0.1);
-        }
-        
-        .project-content {
-            padding: 1.5rem;
-        }
-        
-        .project-title {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-            color: var(--dark);
-        }
-        
-        .project-image {
-            height: 200px;
-            background-color: var(--primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--light);
-            font-size: 1.5rem;
-        }
-        
-        .contact-form {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        
-        .form-control {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 1rem;
-        }
-        
-        .btn {
-            background-color: var(--primary);
-            color: var(--dark);
-            border: none;
-            padding: 0.75rem 1.5rem;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: background-color 0.3s ease;
-        }
-        
-        .btn:hover {
-            background-color: var(--secondary);
-        }
-        
-        footer {
-            background-color: var(--dark);
-            color: var(--light);
-            text-align: center;
-            padding: 1.5rem;
-            margin-left: 250px;
-        }
-        
-        #home {
-            background: linear-gradient(135deg, var(--secondary), var(--accent));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            position: relative;
-        }
-        
-        .home-content {
-            max-width: 800px;
-            z-index: 2;
-        }
-        
-        .home-title {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            color: var(--dark);
-        }
-        
-        .home-subtitle {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            color: var(--dark);
-        }
-        
-        .home-text {
-            margin-bottom: 2rem;
-            color: var(--dark);
-        }
-        
-        .cta-button {
-            display: inline-block;
-            background-color: var(--dark);
-            color: var(--light);
-            padding: 0.8rem 1.8rem;
-            border-radius: 50px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            margin-top: 1rem;
-        }
-        
-        .cta-button:hover {
-            background-color: var(--primary);
-            color: var(--dark);
-            transform: translateY(-3px);
-        }
-        
-        .mobile-nav-toggle {
-            display: none;
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background-color: var(--sidebar-bg);
-            color: var(--sidebar-text);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            text-align: center;
-            line-height: 40px;
-            font-size: 1.5rem;
-            z-index: 999;
-            cursor: pointer;
-            border: none;
-        }
-        
-        @media (max-width: 992px) {
-            .sidebar {
-                width: 80px;
-                transform: translateX(0);
-                transition: all 0.4s ease;
-            }
-            
-            .sidebar.active {
-                width: 250px;
-            }
-            
-            .sidebar:not(.active) .sidebar-profile {
-                padding: 1rem 0.5rem;
-            }
-            
-            .sidebar:not(.active) .profile-img {
-                width: 50px;
-                height: 50px;
-                font-size: 1.2rem;
-            }
-            
-            .sidebar:not(.active) .sidebar-name,
-            .sidebar:not(.active) .sidebar-title,
-            .sidebar:not(.active) .sidebar-socials {
-                display: none;
-            }
-            
-            .sidebar:not(.active) .nav-link {
-                padding: 0.8rem;
-                text-align: center;
-            }
-            
-            .content-area, footer {
-                margin-left: 80px;
-            }
-            
-            .content-area.sidebar-active, footer.sidebar-active {
-                margin-left: 250px;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .mobile-nav-toggle {
-                display: block;
-            }
-            
-            .sidebar {
-                width: 0;
-                transform: translateX(-250px);
-            }
-            
-            .sidebar.active {
-                width: 250px;
-                transform: translateX(0);
-            }
-            
-            .content-area, footer {
-                margin-left: 0;
-            }
-            
-            .content-area.sidebar-active, footer.sidebar-active {
-                margin-left: 0;
-            }
-            
-            .projects {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    <title>Shivprasad Ganesh Shivratri - Personal Website</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- Add Font Awesome for Icons (Optional but good for links) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <button class="mobile-nav-toggle" id="mobile-nav-toggle">
-        <i class="fas fa-bars"></i>
-    </button>
-    
-    <div class="page-container">
-        <aside class="sidebar" id="sidebar">
-            <div class="sidebar-profile">
-                <div class="profile-img">SS</div>
-                <h3 class="sidebar-name">Shivprasad Shivratri</h3>
-                <p class="sidebar-title">PhD Student in Computer Science</p>
-                <div class="sidebar-socials">
-                    <a href="mailto:shivprasadshivratri8793@gmail.com"><i class="fas fa-envelope"></i></a>
-                    <a href="tel:+13392429884"><i class="fas fa-phone"></i></a>
-                    <a href="https://github.com/" target="_blank"><i class="fab fa-github"></i></a>
-                    <a href="https://linkedin.com/" target="_blank"><i class="fab fa-linkedin"></i></a>
+
+    <header>
+        <nav class="container">
+            <div class="logo">Shivprasad G. Shivratri</div>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#research">Research</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" style="background-image: url('https://images.unsplash.com/photo-1501854140801-50d01698950b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=80');">
+            <!-- Replace the URL above with your chosen vibrant nature photo (e.g., mountains/sea) -->
+            <div class="container hero-content">
+                <div class="hero-text">
+                    <h1>Hi, I'm Shivprasad Shivratri <span class="wave">👋</span></h1>
+                    <p class="subtitle">PhD Candidate in Computer Science at Tufts University</p>
+                    <p>Focusing on Reinforcement Learning, Robotics, and AI. Exploring the intersection of technology and practical application.</p>
+                    <a href="#contact" class="btn btn-primary">Get In Touch</a>
+                    <a href="Shivprasad_Ganesh_Shivratri_CV.pdf" class="btn btn-secondary" target="_blank">View CV</a>
+                    <!-- Make sure you have a PDF named Shivprasad_Ganesh_Shivratri_CV.pdf in the same folder -->
+                </div>
+                <div class="hero-photo">
+                    <div class="photo-placeholder">
+                        <!--
+                            Add your photo here!
+                            Replace this div with: <img src="your-photo.jpg" alt="Shivprasad Shivratri">
+                            Make sure your-photo.jpg is in the same folder.
+                        -->
+                        <span>Your Photo Here</span>
+                    </div>
                 </div>
             </div>
-            
-            <nav class="sidebar-nav">
-                <div class="nav-item">
-                    <a href="#home" class="nav-link active" data-section="home">
-                        <i class="fas fa-home"></i> <span>Home</span>
-                    </a>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="container content-section">
+            <h2>About Me</h2>
+            <p>
+                I am a passionate researcher and engineer currently pursuing a PhD in Computer Science at Tufts University's GOLD Lab, advised by Prof. Reuth Mirsky. My current research focuses on applying <strong>Reinforcement Learning for Human-Robot Interaction in Rehabilitation</strong>.
+            </p>
+            <p>
+                Previously, I completed my M.Sc. and B.Sc. in Electrical and Electronic Engineering at Tel Aviv University, graduating Magna Cum Laude for my Bachelor's. My Master's thesis explored "Advances in analysis and control of synchronverter," reflecting my interest in power systems and control theory. I have experience spanning academic research, software engineering, and application engineering in diverse fields like robotics, AI, power systems, and semiconductor manufacturing.
+            </p>
+            </div>
+        </section>
+
+        <!-- Research Section -->
+        <section id="research" class="content-section alt-bg">
+            <div class="container">
+                <h2>Research</h2>
+
+                <h3>Research Experience</h3>
+                <div class="card-grid">
+                    <div class="card">
+                        <h4>GOLD Lab, Tufts University</h4>
+                        <p><em>Graduate Research Assistant (Jan 2025 - Present)</em></p>
+                        <p>Developing RL agents for rehabilitation games (Python, PyTorch, Deep Q-Learning), achieving improved performance over human players.</p>
+                        <p><strong>Mentor:</strong> Prof. Reuth Mirsky</p>
+                    </div>
+                    <div class="card">
+                        <h4>Dept. of Electrical Engineering - Systems, Tel Aviv University</h4>
+                        <p><em>Researcher (Oct 2018 - May 2021)</em></p>
+                        <p>Designed novel Synchronverter algorithms for microgrid stability, achieving significant reduction in frequency/voltage deviations.</p>
+                        <p><strong>Mentor:</strong> Prof. George Weiss</p>
+                    </div>
+                     <div class="card">
+                        <h4>Physical Electronics Laboratory, Tel Aviv University</h4>
+                        <p><em>Research Intern (Jun 2016 - Aug 2016)</em></p>
+                        <p>Designed and fabricated a biosensor for drought detection in plants using clean room techniques.</p>
+                         <p><strong>Mentor:</strong> Prof. Yosi Shacham-Diamand</p>
+                    </div>
                 </div>
-                <div class="nav-item">
-                    <a href="#about" class="nav-link" data-section="about">
-                        <i class="fas fa-user"></i> <span>About</span>
-                    </a>
-                </div>
-                <div class="nav-item">
-                    <a href="#education" class="nav-link" data-section="education">
-                        <i class="fas fa-graduation-cap"></i> <span>Education</span>
-                    </a>
-                </div>
-                <div class="nav-item">
-                    <a href="#experience" class="nav-link" data-section="experience">
-                        <i class="fas fa-briefcase"></i> <span>Experience</span>
-                    </a>
-                </div>
-                <div class="nav-item">
-                    <a href="#research" class="nav-link" data-section="research">
-                        <i class="fas fa-flask"></i> <span>Research</span>
-                    </a>
-                </div>
-                <div class="nav-item">
-                    <a href="#projects" class="nav-link" data-section="projects">
-                        <i class="fas fa-code"></i> <span>Projects</span>
-                    </a>
-                </div>
-                <div class="nav-item">
-                    <a href="#publications" class="nav-link" data-section="publications">
-                        <i class="fas fa-book"></i> <span>Publications</span>
-                    </a>
-                </div>
-                <div class="nav-item">
-                    <a href="#contact" class="nav-link" data-section="contact">
-                        <i class="fas fa-envelope"></i> <span>Contact</span>
-                    </a>
-                </div>
-            </nav>
-        </aside>
-        
-        <main class="content-area" id="content-area">
-            <section id="home" class="active">
-                <div class="home-content">
-                    <h1 class="home-title">Shivprasad Shivratri</h1>
-                    <p class="home-subtitle">PhD Student in Computer Science | Reinforcement Learning | Robotics</p>
-                    <p class="home-text">I'm a researcher focused on Reinforcement Learning for Human-Robot Interaction in Rehabilitation. With a strong background in Electrical and Electronic Engineering, I combine technical expertise with innovative approaches to solve complex problems.</p>
-                    <a href="#about" class="cta-button nav-trigger" data-section="about">Learn More About Me</a>
-                </div>
-            </section>
-            
-            <section id="about">
-                <h2>About Me</h2>
+
+                <h3 class="section-subtitle">Research Publications</h3>
+                 <ul class="publication-list">
+                    <li>Z. Kustanovich, <strong>S. Shivratri</strong>, H. Yin, F. Reissner, G. Weiss, "Synchronverters with fast current loops”, IEEE Trans. Ind. Electron. 70(11), 2022. <a href="#" target="_blank">[IEEE Xplore]</a></li>
+                    <!-- Add actual link -->
+                    <li>Z. Kustanovich, F. Reissner, <strong>S. Shivratri</strong>, G. Weiss, “The sensitivity of grid-connected synchronverters with respect to measurement errors", IEEE Access 9, 2021. <a href="#" target="_blank">[IEEE Access]</a></li>
+                    <!-- Add actual link -->
+                    <li>P. Lorenzetti, Z. Kustanovich, <strong>S. Shivratri</strong>, G. Weiss, “The equilibrium points and stability of grid-connected synchronverters”, IEEE Trans. Power Syst. 37(2), 2021. <a href="#" target="_blank">[IEEE Xplore]</a></li>
+                    <!-- Add actual link -->
+                    <li><strong>S. Shivratri</strong>, Z. Kustanovich, G. Weiss, B. Shani, “Virtual synchronous machines with fast current loop”, IFAC-PapersOnLine 53(2), 2020. <a href="#" target="_blank">[IFAC-PapersOnLine]</a></li>
+                    <!-- Add actual link -->
+                 </ul>
+            </div>
+        </section>
+
+        <!-- Personal Projects Section -->
+        <section id="projects" class="container content-section">
+            <h2>Personal Projects</h2>
+            <div class="card-grid">
                 <div class="card">
-                    <p>I am a PhD student in Computer Science at Tufts University, working in the GOLD Lab under the mentorship of Assistant Professor Reuth Mirsky. My research focuses on Reinforcement Learning for Human-Robot Interaction in Rehabilitation.</p>
-                    <p>With a strong background in Electrical and Electronic Engineering from Tel Aviv University, I've worked extensively on innovative projects in power systems, particularly advancing the analysis and control of synchronverters.</p>
-                    <p>My professional experience spans research, system engineering, and consultancy roles across multiple countries. I'm passionate about applying machine learning and AI to solve real-world problems, especially in robotics and human-computer interaction.</p>
-                    
-                    <div class="skills">
-                        <span class="skill">Reinforcement Learning</span>
-                        <span class="skill">Python</span>
-                        <span class="skill">PyTorch</span>
-                        <span class="skill">TensorFlow</span>
-                        <span class="skill">Computer Vision</span>
-                        <span class="skill">Control Systems</span>
-                        <span class="skill">System Engineering</span>
-                    </div>
+                    <h4>Snake AI (Reinforcement Learning)</h4>
+                    <p>Developed a classic Snake game (Python) and trained an RL Agent (PyTorch, Deep Q-Learning) to play it.</p>
                 </div>
-            </section>
-            
-            <section id="education">
-                <h2>Education</h2>
-                
                 <div class="card">
-                    <div class="card-header">
-                        <div>
-                            <div class="card-title">PhD in Computer Science</div>
-                            <div class="card-subtitle">Tufts University, Boston, USA</div>
-                        </div>
-                        <div class="card-date">Jan 2025 - Present</div>
-                    </div>
-                    <div class="card-content">
-                        <p>Currently pursuing doctoral research in Computer Science, focusing on Reinforcement Learning for Human-Robot Interaction in Rehabilitation at the GOLD Lab under Assistant Professor Reuth Mirsky.</p>
-                    </div>
+                    <h4>Object Detection & Classification (Computer Vision)</h4>
+                    <p>Trained a neural network (TensorFlow) to detect and classify buses in images with 93% accuracy.</p>
                 </div>
-                
                 <div class="card">
-                    <div class="card-header">
-                        <div>
-                            <div class="card-title">M.Sc. in Electrical and Electronic Engineering</div>
-                            <div class="card-subtitle">Tel Aviv University, Israel</div>
-                        </div>
-                        <div class="card-date">Oct 2017 - Jun 2021</div>
-                    </div>
-                    <div class="card-content">
-                        <p>CGPA: 88.5/100</p>
-                        <p>Thesis: "Advances in analysis and control of synchronverter"</p>
-                    </div>
+                    <h4>Panorama Creation (Computer Vision)</h4>
+                    <p>Created panoramic images by stitching images with common points of interest.</p>
                 </div>
-                
-                <div class="card">
-                    <div class="card-header">
-                        <div>
-                            <div class="card-title">B.Sc. in Electrical and Electronic Engineering</div>
-                            <div class="card-subtitle">Tel Aviv University, Israel</div>
-                        </div>
-                        <div class="card-date">Oct 2014 - Aug 2018</div>
-                    </div>
-                    <div class="card-content">
-                        <p>CGPA: 91.6/100</p>
-                        <p>Graduated with "Magna Cum Laude"</p>
-                    </div>
+                 <div class="card">
+                    <h4>Android App Dev (HTSE 2020)</h4>
+                    <p>Developed an informative mobile app for an international conference using Android Studio and Kotlin SDK.</p>
                 </div>
-            </section>
-            
-            <section id="experience">
+            </div>
+        </section>
+
+        <!-- Work Experience Section -->
+        <section id="experience" class="content-section alt-bg">
+             <div class="container">
                 <h2>Work Experience</h2>
-                
-                <div class="card">
-                    <div class="card-header">
-                        <div>
-                            <div class="card-title">Graduate Research Assistant</div>
-                            <div class="card-subtitle">GOLD Lab, Tufts University, Boston, USA</div>
-                        </div>
-                        <div class="card-date">Jan 2025 - Present</div>
+                <div class="card-grid">
+                   <div class="card">
+                        <h4>Meivia Global Services</h4>
+                        <p><em>Associate Consultant (Hybrid) (Apr 2024 - Oct 2024)</em></p>
+                        <p>Conducted market research for international clients, identifying opportunities. Drafted an entrepreneurship book.</p>
                     </div>
-                    <div class="card-content">
-                        <p>Working on Reinforcement Learning for Human-Robot Interaction in Rehabilitation under Assistant Professor Reuth Mirsky.</p>
-                        <ul>
-                            <li>Developed Reach Ninja Game in Python, enabling multiple test scenarios to train a Reinforcement Learning Agent using PyTorch and Deep Q-Learning.</li>
-                            <li>Optimized RL agent training, achieving 1.5x the accuracy and 2x score of a human player.</li>
-                        </ul>
+                    <div class="card">
+                        <h4>KLA+ (India)</h4>
+                        <p><em>Application Engineer (Sep 2023 - Feb 2024)</em></p>
+                        <p>Provided inspection solutions for semiconductor manufacturing yield issues, created product use-cases.</p>
                     </div>
-                </div>
-                
-                <div class="card">
-                    <div class="card-header">
-                        <div>
-                            <div class="card-title">Associate Consultant</div>
-                            <div class="card-subtitle">Meivia Global Services, India</div>
-                        </div>
-                        <div class="card-date">Apr 2024 - Oct 2024</div>
+                     <div class="card">
+                        <h4>KLA+ (Israel)</h4>
+                        <p><em>System Engineer (May 2022 - Apr 2023)</em></p>
+                        <p>Collaborated on system requirements for inspection tools, investigated sensor repeatability, wrote diagnostics.</p>
                     </div>
-                    <div class="card-content">
-                        <ul>
-                            <li>Conducted comprehensive market research for international clients, identifying potential customer and market opportunities for investments.</li>
-                            <li>Drafted an entrepreneurship book based on interviews of Indian businessmen.</li>
-                        </ul>
+                    <div class="card">
+                        <h4>Control Laboratory, Tel Aviv University</h4>
+                        <p><em>Teaching Assistant (Feb 2020 - Jun 2021)</em></p>
+                        <p>Supervised Control Lab course (60 students/semester).</p>
                     </div>
                 </div>
-                
-                <div class="card">
-                    <div class="card-header">
-                        <div>
-                            <div class="card-title">Application Engineer</div>
-                            <div class="card-subtitle">KLA+, India</div>
-                        </div>
-                        <div class="card-date">Sep 2023 - Feb 2024</div>
-                    </div>
-                    <div class="card-content">
-                        <p>Provided inspection solutions by investigating semiconductor manufacturing yield issues and created product use-cases for engineering, marketing, and sales teams.</p>
-                    </div>
-                </div>
-                
-                <div class="card">
-                    <div class="card-header">
-                        <div>
-                            <div class="card-title">System Engineer</div>
-                            <div class="card-subtitle">KLA+, Israel</div>
-                        </div>
-                        <div class="card-date">May 2022 - Apr 2023</div>
-                    </div>
-                    <div class="card-content">
-                        <ul>
-                            <li>Collaborated with Software, Hardware and Electronics teams to write system level requirements for integrating a new focus laser and adding 3 motors to the Optical head of the inspection tool.</li>
-                            <li>Investigated focus sensor repeatability and optimized system requirements to mitigate the issue.</li>
-                            <li>Wrote diagnostics and calibrations for fast focus mechanism in the inspection tool.</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-            
-            <section id="research">
-                <h2>Research Experience</h2>
-                
-                <div class="card">
-                    <div class="card-header">
-                        <div>
-                            <div class="card-title">Researcher</div>
-                            <div class="card-subtitle">Department of Electrical Engineering - Systems, Tel Aviv University</div>
-                        </div>
-                        <div class="card-date">Oct 2018 - May 2021</div>
-                    </div>
-                    <div class="card-content">
-                        <p>Mentor: Professor George Weiss</p>
-                        <ul>
-                            <li>Designed a novel Synchronverter algorithm for inverters to emulate the behavior of synchronous generators, enhancing power balance and system stability in microgrids.</li>
-                            <li>Achieved a 6x reduction in frequency and voltage deviations from nominal values which improved the grid performance significantly.</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="card">
-                    <div class="card-header">
-                        <div>
-                            <div class="card-title">Research Intern</div>
-                            <div class="card-subtitle">Physical Electronics Laboratory, Tel Aviv University</div>
-                        </div>
-                        <div class="card-date">Jun 2016 - Aug 2016</div>
-                    </div>
-                    <div class="card-content">
-                        <p>Mentor: Professor Yosi Shacham-Diamand</p>
-                        <ul>
-                            <li>Designed and fabricated a biosensor using sputtering gold and photolithography technique in clean room for drought detection in plants.</li>
-                            <li>Achieved the size reduction of the biosensor by 1x and cost reduction by 3x.</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-            
-            <section id="projects">
-                <h2>Projects</h2>
-                
-                <div class="projects">
-                    <div class="project-card">
-                        <div class="project-image">Reinforcement Learning</div>
-                        <div class="project-content">
-                            <h3 class="project-title">Snake AI</h3>
-                            <p>Developed a classic Snake game in Python and trained a Reinforcement Learning Agent to play the game using PyTorch framework and Deep Q-Learning algorithm.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="project-card">
-                        <div class="project-image">Computer Vision</div>
-                        <div class="project-content">
-                            <h3 class="project-title">Object Detection and Classification</h3>
-                            <p>Trained a neural network using TensorFlow to detect and classify buses in images with accuracy of 93%.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="project-card">
-                        <div class="project-image">Computer Vision</div>
-                        <div class="project-content">
-                            <h3 class="project-title">Panorama Creation</h3>
-                            <p>Created a panoramic image by stitching together two images that had few common points of interest.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="project-card">
-                        <div class="project-image">Mobile Development</div>
-                        <div class="project-content">
-                            <h3 class="project-title">Android Application Development</h3>
-                            <p>Developed an informative mobile application for International conference on Materials Technology using Android Studio and Kotlin SDK.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
-            <section id="publications">
-                <h2>Publications</h2>
-                
-                <div class="publications">
-                    <div class="publication">
-                        <h3>Synchronverters with fast current loops</h3>
-                        <p>Zeev Kustanovich, Shivprasad Shivratri, Hang Yin, Florian Reissner, George Weiss</p>
-                        <p>IEEE Transactions on Industrial Electronics 70(11), 2022</p>
-                    </div>
-                    
-                    <div class="publication">
-                        <h3>The sensitivity of grid-connected synchronverters with respect to measurement errors</h3>
-                        <p>Zeev Kustanovich, Florian Reissner, Shivprasad Shivratri, George Weiss</p>
-                        <p>IEEE Access 9, 2021</p>
-                    </div>
-                    
-                    <div class="publication">
-                        <h3>The equilibrium points and stability of grid-connected synchronverters</h3>
-                        <p>Pietro Lorenzetti, Zeev Kustanovich, Shivprasad Shivratri, George Weiss</p>
-                        <p>IEEE Transactions on Power Systems 37(2), 2021</p>
-                    </div>
-                    
-                    <div class="publication">
-                        <h3>Virtual synchronous machines with fast current loop</h3>
-                        <p>Shivprasad Shivratri, Zeev Kustanovich, George Weiss, Benny Shani</p>
-                        <p>IFAC-PapersOnLine 53(2), 2020</p>
-                    </div>
-                </div>
-            </section>
-            
-            <section id="contact">
-                <h2>Contact Me</h2>
-                
-                <div class="contact-form">
-                    <form id="contact-form">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Your Name" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" class="form-control" placeholder="Your Email" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Subject" required>
-                        </div>
-                        <div class="form-group">
-                            <textarea class="form-control" rows="5" placeholder="Your Message" required></textarea>
-                        </div>
-                        <button type="submit" class="btn">Send Message</button>
-                    </form>
-                </div>
-            </section>
-        </main>
-    </div>
-    
-    <footer id="footer">
-        <p>&copy; 2025 Shivprasad Shivratri. All rights reserved.</p>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="container content-section">
+            <h2>Get In Touch</h2>
+            <p>Feel free to reach out if you'd like to discuss research, projects, or potential collaborations!</p>
+            <div class="contact-info">
+                 <p><i class="fas fa-envelope"></i> <a href="mailto:shivprasadshivratri8793@gmail.com">shivprasadshivratri8793@gmail.com</a></p>
+                 <p><i class="fas fa-phone"></i> (+1) 339-242-9884 (Optional: Consider if you want phone public)</p>
+                 <p><i class="fab fa-linkedin"></i> <a href="[YOUR_LINKEDIN_URL]" target="_blank">LinkedIn Profile</a></p> <!-- Add your LinkedIn URL -->
+                 <p><i class="fab fa-github"></i> <a href="[YOUR_GITHUB_URL]" target="_blank">GitHub Profile</a></p>   <!-- Add your GitHub URL -->
+                 <!-- Add other relevant links like Google Scholar, ResearchGate if applicable -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2024 Shivprasad Ganesh Shivratri. Inspired by Ali Abdaal.</p>
+            <!-- Optional: Add social links again -->
+             <div class="social-links-footer">
+                 <a href="[YOUR_LINKEDIN_URL]" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                 <a href="[YOUR_GITHUB_URL]" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                 <a href="mailto:shivprasadshivratri8793@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+             </div>
+        </div>
     </footer>
-    
+
+    <!-- Optional: Add Smooth Scrolling JS -->
     <script>
-        // Section navigation functionality
-        document.querySelectorAll('.nav-link, .nav-trigger').forEach(link => {
-            link.addEventListener('click', function(e) {
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                
-                const sectionId = this.getAttribute('data-section');
-                
-                // Update active section
-                document.querySelectorAll('section').forEach(section => {
-                    section.classList.remove('active');
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
                 });
-                document.getElementById(sectionId).classList.add('active');
-                
-                // Update active nav link
-                document.querySelectorAll('.nav-link').forEach(navLink => {
-                    navLink.classList.remove('active');
-                });
-                document.querySelector(`.nav-link[data-section="${sectionId}"]`).classList.add('active');
-                
-                // On mobile, close sidebar after clicking
-                if (window.innerWidth <= 768) {
-                    document.getElementById('sidebar').classList.remove('active');
-                    document.getElementById('content-area').classList.remove('sidebar-active');
-                    document.getElementById('footer').classList.remove('sidebar-active');
-                }
-                
-                // Scroll to top
+            });
+        });
+    </script>
+
+</body>
+</html>
